@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Weekday Game</title>
+		<link rel="stylesheet" href="styles.css">
+		<script src="script.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<h1>Weekday Game</h1>
+			<p>Guess which day of the week the given date is!</p>
+			<div class="dropdown">
+				<label for="languageDropdown">Language:</label>
+				<select id="languageDropdown">
+					<option>de-DE</option>
+					<option>en-US</option>
+					<option>fr-FR</option>
+					<option>it-IT</option>
+					<option>sv-SV</option>
+				</select>
+			</div>
+		</header>
+		<button id="btn-start">start</button>
+		<section hidden>
+			<h1 id="questionHeader">Question <span id="questionNumberElement"></span></h1>
+			<button id="btn-next"> next &#x203A</button>
+			<p>Which day of the week is <strong id="dateElement"> ... </strong> ?</p>
+			<div>
+				<button class="ansButton" id="btn-ans-1"> 1 </button>
+				<button class="ansButton" id="btn-ans-2"> 2 </button>
+				<button class="ansButton" id="btn-ans-3"> 3 </button>
+				<button class="ansButton" id="btn-ans-4"> 4 </button>
+				<button class="ansButton" id="btn-ans-5"> 5 </button>
+				<button class="ansButton" id="btn-ans-6"> 6 </button>
+				<button class="ansButton" id="btn-ans-0"> 7 </button>
+			</div>
+		</section>
+		<footer>&copy 2022 Jonathan Kaatz</footer>
+	</body>
+</html>

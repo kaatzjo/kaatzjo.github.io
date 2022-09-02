@@ -1,0 +1,103 @@
+html, body {
+	margin : 0;
+	padding : 0;
+	min-height: 25px;
+	height: 100%;
+}
+
+body {
+	background: rgb(189, 196, 227);
+}
+
+header {
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 26%, rgba(9,9,121,0.7063025893951331) 58%, rgba(0,212,255,1) 80%);
+}
+
+header>h1{
+	color : rgb(72, 224, 255);
+	margin:0;
+	margin-left: 20px;
+}
+
+header>p{
+	color : rgb(72, 224, 255);
+	margin:0;
+	margin-left: 10px;
+}
+
+.dropdown {
+	float: right;
+	position: absolute;
+	right: 0;
+	top:0;
+	margin: 5px;
+}
+
+body section{
+	margin: 5px;
+}
+
+footer {
+	padding: 5px;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	color: white;
+	background: rgb(7,3,78);
+	background: linear-gradient(338deg, rgba(7,3,78,1) 31%, rgba(9,9,121,0.5578432056416316) 58%, rgba(0,212,255,1) 88%); 
+}
+
+
+#dateElement{
+	font-size: 150%;
+}
+
+#btn-start{
+	font-size: 100%;
+	min-width: 15ch;
+	width: 50vmin;
+	min-height: 44px;
+	height: 25vmin;
+	margin: 20px;
+}
+
+section h1{
+	display: inline-block;
+	min-width: 12ch;
+	width: 20%;
+}
+
+#btn-next{
+	box-sizing: border-box;
+	font-size: 16px;
+	min-width: 10ch;
+	width: 30%;
+	min-height: 44px;
+	text-align: center;
+	/*border-radius: 8px;*/
+	cursor:pointer;
+}
+
+.ansButton{
+	box-sizing: border-box;
+	font-size: 16px;
+	min-width: 12ch;
+	width:10%;
+	min-height: 44px;
+	height: 50%;
+	text-align: center;
+	cursor:pointer;
+}
+
+.ansButton[disabled]{
+	cursor:not-allowed;
+}
+
+.ansButton[state="correct"]{
+	background: rgb(204, 255, 153);
+}
+
+.ansButton[state="incorrect"]{
+	text-decoration: line-through;
+}
