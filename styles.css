@@ -101,3 +101,11 @@ section h1{
 .ansButton[state="incorrect"]{
 	text-decoration: line-through;
 }
+
+.scoreDisplay{
+	float: right;
+}
+
+.scoreDisplay>label{
+	display: block;
+}

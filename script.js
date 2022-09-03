@@ -9,6 +9,8 @@ const buttonStart = document.getElementById("btn-start");
 const dateElement = document.getElementById("dateElement");
 const questionNumberElement = document.getElementById("questionNumberElement");
 const mainSection = document.querySelector("body section");
+const currentStreakElement = document.getElementById("currentStreakElement");
+const longestStreakElement = document.getElementById("longestStreakElement");
 const ansButtons = new Array(7);
 for (let i=0; i<7; i++){
 	ansButtons[i] = document.getElementById("btn-ans-"+String(i));
@@ -26,6 +28,9 @@ let weekday;
 
 let answered = false;
 let questionCounter = 0;
+
+let currentStreak;
+let longestStreak;
 
 
 function ansButtonclick(i){
@@ -57,6 +62,11 @@ function updateQuestionNumber(){
 	questionNumberElement.innerHTML = String(questionCounter);
 }
 
+function updateStreakElements(){
+	currentStreakElement.innerHTML = String(currentStreak);
+	longestStreakElement.innerHTML = String(longestStreak);
+}
+
 function start(){
 	mainSection.hidden = false;
 	buttonStart.hidden = true;
@@ -80,9 +90,11 @@ function next() {
 function check_answer(answer){
 	if (weekday == null || answered === true){return}
 	if (weekday === answer){
+		correct_answer();
 		correctAnswerFound();
 		return true;
 	} else {
+		incorrect_answer();
 		return false;
 	}
 }
@@ -122,12 +134,37 @@ function changeLocales(newLanguage){
 	}
 }
 
+function correct_answer(){
+	console.log("correct answer");
+	currentStreak ++;
+	if (currentStreak > longestStreak){
+		console.log("new longest Streak");
+		longestStreak = currentStreak;
+		localStorage.setItem("longestStreak", String(longestStreak));
+	}
+	updateStreakElements();
+}
+
+function incorrect_answer(){
+	console.log("incorrect answer")
+	currentStreak = 0;
+	updateStreakElements();
+}
+
 
 onload = () => {
 	locales = localStorage.getItem('locales');
 	if (!locales){
 		locales = document.documentElement.lang;
 	}
+	longestStreak = localStorage.getItem('longestStreak');
+	if (!longestStreak){
+		longestStreak = 0;
+	}
+	else {
+		longestStreak = Number(longestStreak);
+	}
+	currentStreak = 0;
+	updateStreakElements();
 	start()
-
 }
