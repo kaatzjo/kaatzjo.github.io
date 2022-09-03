@@ -3,7 +3,7 @@ let endD = new Date(2099, 12, 31);
 let dateOptions = {day:'numeric', month:'long', year: 'numeric'};
 let buttonTextOption = 'long';
 
-let locales = document.documentElement.lang;
+let locales;
 const buttonNext = document.getElementById("btn-next");
 const buttonStart = document.getElementById("btn-start");
 const dateElement = document.getElementById("dateElement");
@@ -61,7 +61,7 @@ function start(){
 	mainSection.hidden = false;
 	buttonStart.hidden = true;
 	next();
-	languageSelector.onchange();
+	changeLocales(locales);
 }
 
 function next() {
@@ -114,6 +114,8 @@ function setAnsButtonsText(){
 
 function changeLocales(newLanguage){
 	locales = newLanguage;
+	localStorage.setItem("locales", locales);
+	languageSelector.value = locales;
 	setAnsButtonsText();
 	if (randomD != null){
 		dateElement.innerHTML = randomD.toLocaleDateString(locales, dateOptions);
@@ -121,4 +123,11 @@ function changeLocales(newLanguage){
 }
 
 
-onload = start;
+onload = () => {
+	locales = localStorage.getItem('locales');
+	if (!locales){
+		locales = document.documentElement.lang;
+	}
+	start()
+
+}
