@@ -50,7 +50,7 @@ footer {
 
 
 #dateElement{
-	font-size: 150%;
+	font-size: clamp(1rem, 8vw, 3rem);
 }
 
 #btn-start{
@@ -63,29 +63,37 @@ footer {
 }
 
 section h1{
+	margin-top: 5px;
+	margin-bottom: 0;
 	display: inline-block;
 	min-width: 12ch;
 	width: 20%;
 }
 
 #btn-next{
-	box-sizing: border-box;
-	font-size: 16px;
-	min-width: 10ch;
-	width: 30%;
-	min-height: 44px;
+	flex: 1 100%;
+	align-self: flex-end;
+	display: inline-block;
+	font-size: 2.5em;
+	min-width: 8ch;
+	min-height: 84px;
+	height: 20vh;
 	text-align: center;
 	/*border-radius: 8px;*/
 	cursor:pointer;
 }
 
+.ButtonContainer{
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .ansButton{
-	box-sizing: border-box;
-	font-size: 16px;
+	flex: 1;
+	font-size: 1.2em;
 	min-width: 12ch;
-	width:10%;
-	min-height: 44px;
-	height: 50%;
+	min-height: 64px;
+	height: 10vh;
 	text-align: center;
 	cursor:pointer;
 }
@@ -109,3 +117,22 @@ section h1{
 .scoreDisplay>label{
 	display: block;
 }
+
+section>p{
+	margin: 0;
+	margin-top: -15px;
+}
+
+@media only screen and (max-width: 640px) {
+	/* For mobile phones: */
+	.ansButton {
+	  flex: 1 50%;
+	}
+	#dateElement{
+		font-size: clamp(1rem, 10vw, 3rem);
+		display: block;
+	}
+	section>p{
+		margin-top: 10px;
+	}
+  }

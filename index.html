@@ -2,6 +2,7 @@
 <html lang="de-DE">
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Weekday Game</title>
 		<link rel="stylesheet" href="styles.css">
 		<script src="script.js" defer></script>
@@ -23,14 +24,13 @@
 		</header>
 		<button id="btn-start">start</button>
 		<section hidden>
-			<h1 id="questionHeader">Question <span id="questionNumberElement"></span></h1>
-			<button id="btn-next"> next &#x203A</button>
 			<div class="scoreDisplay">
 				<label>Current Streak: <span id="currentStreakElement">0</span></label>
 				<label>Longest Streak: <span id="longestStreakElement">0</span></label>
 			</div>
-			<p>Which day of the week is <strong id="dateElement"> ... </strong> ?</p>
-			<div>
+			<h1 id="questionHeader">Question <span id="questionNumberElement"></span></h1>
+			<p>Which day of the week is <strong id="dateElement"> ... </strong></p>
+			<div class="ButtonContainer">
 				<button class="ansButton" id="btn-ans-1"> 1 </button>
 				<button class="ansButton" id="btn-ans-2"> 2 </button>
 				<button class="ansButton" id="btn-ans-3"> 3 </button>
@@ -38,6 +38,7 @@
 				<button class="ansButton" id="btn-ans-5"> 5 </button>
 				<button class="ansButton" id="btn-ans-6"> 6 </button>
 				<button class="ansButton" id="btn-ans-0"> 7 </button>
+				<button id="btn-next"> next &#x203A</button>
 			</div>
 		</section>
 		<footer>&copy 2022 Jonathan Kaatz</footer>
