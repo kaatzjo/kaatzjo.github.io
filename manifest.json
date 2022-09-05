@@ -7,7 +7,7 @@
     "scope": "/",
     "icons": [
         {
-            "src": "calendar.svg",
+            "src": "icons/calendar.svg",
             "sizes": "any"
         }
     ]

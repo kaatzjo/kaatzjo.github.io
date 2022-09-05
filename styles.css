@@ -130,7 +130,7 @@ section>p{
 		height: 9.5vh;
 	}
 	html #btn-next{
-		height: 14vh;
+		height: 13vh;
 	}
 	html #dateElement{
 		font-size: clamp(1rem, 10vw, 3rem);
