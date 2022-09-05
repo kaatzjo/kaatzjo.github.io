@@ -7,8 +7,8 @@
     "scope": "/",
     "icons": [
         {
-            "src": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Feather-core-calendar.svg",
-            "sizes": "24x24"
+            "src": "calendar.svg",
+            "sizes": "any"
         }
     ]
 }
