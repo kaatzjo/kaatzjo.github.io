@@ -76,7 +76,7 @@ section h1{
 	display: inline-block;
 	font-size: 2.5em;
 	min-width: 8ch;
-	min-height: 84px;
+	min-height: 104px;
 	height: 20vh;
 	text-align: center;
 	/*border-radius: 8px;*/
@@ -92,8 +92,8 @@ section h1{
 	flex: 1;
 	font-size: 1.2em;
 	min-width: 12ch;
-	min-height: 64px;
-	height: 10vh;
+	min-height: 74px;
+	height: 12vh;
 	text-align: center;
 	cursor:pointer;
 }
@@ -125,14 +125,21 @@ section>p{
 
 @media only screen and (max-width: 640px) {
 	/* For mobile phones: */
-	.ansButton {
-	  flex: 1 50%;
+	html .ansButton {
+		flex: 1 100%;
+		height: 9.5vh;
 	}
-	#dateElement{
+	html #btn-next{
+		height: 14vh;
+	}
+	html #dateElement{
 		font-size: clamp(1rem, 10vw, 3rem);
 		display: block;
 	}
-	section>p{
+	html section>p{
 		margin-top: 10px;
 	}
-  }
+	html footer{
+		display: none;
+	}
+}
