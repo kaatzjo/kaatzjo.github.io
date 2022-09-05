@@ -8,7 +8,8 @@ const buttonNext = document.getElementById("btn-next");
 const buttonStart = document.getElementById("btn-start");
 const dateElement = document.getElementById("dateElement");
 const questionNumberElement = document.getElementById("questionNumberElement");
-const mainSection = document.querySelector("body section");
+const preStartSection = document.getElementById("preStart")
+const postStartSection = document.getElementById("postStart")
 const currentStreakElement = document.getElementById("currentStreakElement");
 const longestStreakElement = document.getElementById("longestStreakElement");
 const ansButtons = new Array(7);
@@ -68,14 +69,14 @@ function updateStreakElements(){
 }
 
 function start(){
-	mainSection.hidden = false;
-	buttonStart.hidden = true;
+	preStartSection.hidden = true;
+	postStartSection.hidden = false;
 	next();
 	changeLocales(locales);
 }
 
 function next() {
-	if(mainSection.hidden){return;}
+	if(postStartSection.hidden){return;}
 	updateQuestionNumber();
 	resetAnsButtonState();
 	answered = false;
