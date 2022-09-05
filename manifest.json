@@ -1,0 +1,14 @@
+{
+    "name": "Weekday Game",
+    "display": "standalone",
+    "start_url": "index.html",
+    "background_color": "#bdc4e3",
+    "orientation": "portrait",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Feather-core-calendar.svg",
+            "sizes": "24x24"
+        }
+    ]
+}
