@@ -1,0 +1,12 @@
+body > section{
+    margin: 5px;
+}
+
+body > section > *{
+    margin: 5px;
+}
+
+
+#timeframeInput>div{
+	display: block;
+}

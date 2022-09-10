@@ -1,0 +1,74 @@
+html, body {
+	margin : 0;
+	padding : 0;
+	min-height: 25px;
+	height: 100%;
+}
+
+body {
+	background: rgb(189, 196, 227);
+}
+
+header {
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 26%, rgba(9,9,121,0.7063025893951331) 58%, rgba(0,212,255,1) 80%);
+}
+
+header>h1{
+	color : rgb(72, 224, 255);
+	margin:0;
+	margin-left: 20px;
+}
+
+header>p{
+	color : rgb(72, 224, 255);
+	margin:0;
+	margin-left: 10px;
+}
+
+footer {
+	padding: 5px;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	color: white;
+	background: rgb(7,3,78);
+	background: linear-gradient(338deg, rgba(7,3,78,1) 31%, rgba(9,9,121,0.5578432056416316) 58%, rgba(0,212,255,1) 88%); 
+}
+
+
+/* nav bar: */
+header{
+    position: relative;
+}
+
+nav > ul{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav > ul > li{
+    float: left;
+}
+
+nav > ul > li > a{
+    display: block;
+    padding: 5px 15px;
+    background: #ddd;
+    color: black;
+    text-decoration: none;
+    margin-right: 1px;
+}
+
+nav > ul > li.active > a{
+    background: white;
+    cursor: default;
+}
+
+nav > ul > li:hover > a{
+    background: white;
+}

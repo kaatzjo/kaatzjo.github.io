@@ -1,5 +1,5 @@
-let startD = new Date(1900, 1, 1);
-let endD = new Date(2099, 12, 31);
+let startD = new Date(1900, 0, 1);
+let endD = new Date(2099, 11, 31);
 let dateOptions = {day:'numeric', month:'long', year: 'numeric'};
 let buttonTextOption = 'long';
 
@@ -12,17 +12,17 @@ const preStartSection = document.getElementById("preStart")
 const postStartSection = document.getElementById("postStart")
 const currentStreakElement = document.getElementById("currentStreakElement");
 const longestStreakElement = document.getElementById("longestStreakElement");
+const timeElement = document.getElementById("timeElement");
 const ansButtons = new Array(7);
 for (let i=0; i<7; i++){
 	ansButtons[i] = document.getElementById("btn-ans-"+String(i));
 	ansButtons[i].onclick = (() => ansButtonclick(i));
 	ansButtons[i].setAttribute("state", "clickable")
 }
-const languageSelector = document.querySelector("select");
-languageSelector.onchange = () => {changeLocales(languageSelector.value)}
-buttonStart.onclick = start;
-buttonNext.onclick = next;
-onkeydown = keydown_function;
+buttonStart.addEventListener('click', start);
+buttonNext.addEventListener('click', next);
+addEventListener('keydown', keydown_function);
+
 
 let randomD;
 let weekday;
@@ -32,6 +32,8 @@ let questionCounter = 0;
 
 let currentStreak;
 let longestStreak;
+
+let questionStartTime;
 
 
 function ansButtonclick(i){
@@ -55,6 +57,7 @@ function randomNumber(start, end) {
 }
 
 function randomDate(startDate, endDate){
+	// not including endDate
 	return new Date(randomNumber(startDate.getTime(), endDate.getTime()));
 }
 
@@ -72,7 +75,6 @@ function start(){
 	preStartSection.hidden = true;
 	postStartSection.hidden = false;
 	next();
-	changeLocales(locales);
 }
 
 function next() {
@@ -86,6 +88,18 @@ function next() {
 	const dayString = randomD.toLocaleDateString(locales, dateOptions);
 	console.log(randomD);
 	dateElement.innerHTML = dayString;
+	questionStartTime = Date.now();
+}
+
+function keydown_function(event){
+	console.log(event.key);
+	if (event.key === 'n'){
+		next();
+	} else if (event.key === 's' && questionCounter === 0){
+		start();
+	} else if ('0'<=event.key && event.key<'8'){
+		ansButtonclick(Number(event.key)%7);
+	}
 }
 
 function check_answer(answer){
@@ -108,38 +122,17 @@ function correctAnswerFound(){
 	}
 }
 
-function keydown_function(event){
-	console.log(event.key);
-	if (event.key === 'n'){
-		next();
-	} else if (event.key === 's' && questionCounter === 0){
-		start();
-	} else if ('0'<=event.key && event.key<'8'){
-		ansButtonclick(Number(event.key)%7);
-	}
-}
-
 function setAnsButtonsText(){
 	for (let i=0; i<7; i++){
-		ansButtons[i].innerHTML = new Date(1900,0,i+7).toLocaleString(locales, {weekday: buttonTextOption});
-	}
-}
-
-function changeLocales(newLanguage){
-	locales = newLanguage;
-	localStorage.setItem("locales", locales);
-	languageSelector.value = locales;
-	setAnsButtonsText();
-	if (randomD != null){
-		dateElement.innerHTML = randomD.toLocaleDateString(locales, dateOptions);
+		ansButtons[i].innerHTML = new Date(1900,0,i).toLocaleString(locales, {weekday: buttonTextOption});
 	}
 }
 
 function correct_answer(){
-	console.log("correct answer");
+	let time_elapsed = Date.now() - questionStartTime;
+	timeElement.innerHTML = time_elapsed/1000;
 	currentStreak ++;
 	if (currentStreak > longestStreak){
-		console.log("new longest Streak");
 		longestStreak = currentStreak;
 		localStorage.setItem("longestStreak", String(longestStreak));
 	}
@@ -147,16 +140,15 @@ function correct_answer(){
 }
 
 function incorrect_answer(){
-	console.log("incorrect answer")
 	currentStreak = 0;
 	updateStreakElements();
 }
 
-
-onload = () => {
+function loadLocalStorage(){
 	locales = localStorage.getItem('locales');
 	if (!locales){
-		locales = document.documentElement.lang;
+		//locales = document.documentElement.lang;
+		locales = navigator.language;
 	}
 	longestStreak = localStorage.getItem('longestStreak');
 	if (!longestStreak){
@@ -165,6 +157,19 @@ onload = () => {
 	else {
 		longestStreak = Number(longestStreak);
 	}
+	const startDate = localStorage.getItem('startDate');
+	if (startDate){
+		startD = new Date(startDate)
+	}
+	const endDate = localStorage.getItem('endDate');
+	if (endDate){
+		endD = new Date(endDate)
+	}
+}
+
+onload = () => {
+	loadLocalStorage();
+	setAnsButtonsText();
 	currentStreak = 0;
 	updateStreakElements();
 	start()

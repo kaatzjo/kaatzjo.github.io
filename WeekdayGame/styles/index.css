@@ -1,55 +1,14 @@
-html, body {
-	margin : 0;
-	padding : 0;
-	min-height: 25px;
-	height: 100%;
-}
-
-body {
-	background: rgb(189, 196, 227);
-}
-
-header {
-	background: rgb(2,0,36);
-	background: linear-gradient(90deg, rgba(2,0,36,1) 26%, rgba(9,9,121,0.7063025893951331) 58%, rgba(0,212,255,1) 80%);
-}
-
-header>h1{
-	color : rgb(72, 224, 255);
-	margin:0;
-	margin-left: 20px;
-}
-
-header>p{
-	color : rgb(72, 224, 255);
-	margin:0;
-	margin-left: 10px;
-}
-
-.dropdown {
-	float: right;
-	position: absolute;
-	right: 0;
-	top:0;
-	margin: 5px;
-}
-
 body section{
 	margin: 5px;
 }
 
-footer {
-	padding: 5px;
-	position: fixed;
-	bottom: 0px;
-	right: 0px;
-	color: white;
-	background: rgb(7,3,78);
-	background: linear-gradient(338deg, rgba(7,3,78,1) 31%, rgba(9,9,121,0.5578432056416316) 58%, rgba(0,212,255,1) 88%); 
+section>p{
+	margin: 0;
+	margin-top: -15px;
 }
 
-
 #dateElement{
+	font-weight: bold;
 	font-size: clamp(1rem, 8vw, 3rem);
 }
 
@@ -95,7 +54,7 @@ section h1{
 	min-height: 74px;
 	height: 12vh;
 	text-align: center;
-	cursor:pointer;
+	cursor: pointer;
 }
 
 .ansButton[disabled]{
@@ -118,10 +77,6 @@ section h1{
 	display: block;
 }
 
-section>p{
-	margin: 0;
-	margin-top: -15px;
-}
 
 @media only screen and (max-width: 640px) {
 	/* For mobile phones: */
@@ -142,9 +97,4 @@ section>p{
 	html footer{
 		display: none;
 	}
-}
-
-section a img[alt="info"]{
-	width: 64px;
-	height: 64px;
 }

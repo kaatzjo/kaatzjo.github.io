@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<title>Weekday Game</title>
+		<link rel="manifest" href="manifest.json">
+		<link rel="icon" type="image/svg+xml" href="icons/calendar.svg">
+		<link rel="apple-touch-icon" sizes="180x180" href="icons/calendar_colorful.png">
+		<link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/settings.css">
+		<script src="scripts/settings.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<h1>Weekday Game</h1>
+			<p>Guess which day of the week the given date is!</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Play</a></li>
+                    <li class="active"><a href="settings.html">Settings</a></li>
+                    <li><a href="stats.html">Stats</a></li>
+                    <li><a href="more.html">More</a></li>
+                </ul>
+            </nav>
+		</header>
+		<section id="preStart">
+			<div class="dropdown">
+				<label for="languageDropdown">Language:</label>
+				<select id="languageDropdown">
+					<option>de-DE</option>
+					<option>en-US</option>
+					<option>fr-FR</option>
+					<option>it-IT</option>
+					<option>sv-SV</option>
+				</select>
+			</div>
+			<div id="timeframeInput">
+				<div>
+					<label for="start">Start date:</label>
+					<input type="date" id="startDate" name="startDate" min="1582-10-15" max="2099-12-31">
+				</div>
+				<div>
+					<label for="end">End date:</label>
+					<input type="date" id="endDate" name="endDate" min="1582-10-15" max="2999-12-31">
+				</div>
+			</div>
+		</section>
+    </body>
+</html>
