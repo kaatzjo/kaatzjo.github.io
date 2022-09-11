@@ -51,7 +51,7 @@ section h1{
 	flex: 1;
 	font-size: 1.2em;
 	min-width: 12ch;
-	min-height: 74px;
+	min-height: 64px;
 	height: 12vh;
 	text-align: center;
 	cursor: pointer;
@@ -77,6 +77,10 @@ section h1{
 	display: block;
 }
 
+#navbarPlaceholder{
+	display: none;
+}
+
 
 @media only screen and (max-width: 640px) {
 	/* For mobile phones: */
@@ -96,5 +100,13 @@ section h1{
 	}
 	html footer{
 		display: none;
+	}
+}
+
+@media only screen and (orientation: portrait) and (max-height: 890px) {
+	html #navbarPlaceholder{
+		height: 44px;
+		display: inline-block;
+		flex: 1 100%;
 	}
 }
