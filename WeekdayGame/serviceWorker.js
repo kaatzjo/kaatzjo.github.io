@@ -28,9 +28,10 @@ self.addEventListener('install', (event)=>{
         if (!FORCE_UPDATE){
             return;
         }
-        caches.delete(CACHE_NAME).then(bool => console.log(bool));
+        event.waitUntil(caches.delete(CACHE_NAME).then(() => fillCache(CACHE_NAME)));
+    } else {
+        event.waitUntil(fillCache(CACHE_NAME));
     }
-    fillCache(CACHE_NAME);
 });
 
 self.addEventListener('fetch', (event)=>{
