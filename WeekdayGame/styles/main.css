@@ -82,6 +82,7 @@ nav > ul > li:hover > a{
 	}
 
 	body nav > ul{
+		position: fixed;
 		right: 0px;
 		display: flex;
 		flex-direction: row;
