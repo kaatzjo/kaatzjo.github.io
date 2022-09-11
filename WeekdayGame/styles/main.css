@@ -72,3 +72,30 @@ nav > ul > li.active > a{
 nav > ul > li:hover > a{
     background: white;
 }
+
+
+@media only screen and (max-width: 640px) {
+	/* For mobile phones: */
+	/* nav bar: at the bottom*/
+	body header{
+		position: static;
+	}
+
+	body nav > ul{
+		right: 0px;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 100%;
+	}
+
+	body nav > ul > li{
+		flex: 1;
+	}
+
+	body nav > ul > li > a{
+		height: 44px;
+		line-height: 44px;
+		text-align: center;
+	}
+}
