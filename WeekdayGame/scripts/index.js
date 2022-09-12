@@ -29,11 +29,14 @@ let weekday;
 
 let answered = false;
 let questionCounter = 0;
+let numberGuesses = 0;
+let correctGuesses = 0;
 
 let currentStreak;
 let longestStreak;
 
 let questionStartTime;
+let totalTime;
 
 
 function ansButtonclick(i){
@@ -109,9 +112,11 @@ function check_answer(answer){
 	if (weekday === answer){
 		correct_answer();
 		correctAnswerFound();
+		updateStats(true);
 		return true;
 	} else {
 		incorrect_answer();
+		updateStats(false);
 		return false;
 	}
 }
@@ -152,8 +157,6 @@ function loadLocalStorage(){
 		//locales = document.documentElement.lang;
 		locales = navigator.language;
 	}
-	questionCounter = sessionStorage.getItem('questionCounter') || 0;
-	currentStreak = sessionStorage.getItem('currentStreak') || 0;
 	longestStreak = localStorage.getItem('longestStreak');
 	if (!longestStreak){
 		longestStreak = 0;
@@ -171,8 +174,31 @@ function loadLocalStorage(){
 	}
 }
 
+function loadSessionStorage(){
+	questionCounter = sessionStorage.getItem('questionCounter') || 0;
+	numberGuesses = sessionStorage.getItem('numberGuesses') || 0;
+	correctGuesses = sessionStorage.getItem('correctGuesses') || 0;
+	currentStreak = sessionStorage.getItem('currentStreak') || 0;
+	totalTime = Number(sessionStorage.getItem('totalTime') || 0);
+}
+
+function updateStats(wasCorrectGuess){
+	if (wasCorrectGuess){
+		totalTime += Date.now() - questionStartTime;
+		sessionStorage.setItem('totalTime', totalTime);
+		correctGuesses ++;
+		sessionStorage.setItem('correctGuesses', correctGuesses);
+	} else {
+		//pass
+	}
+	numberGuesses ++;
+	sessionStorage.setItem('numberGuesses', numberGuesses);
+}
+
+
 onload = () => {
 	loadLocalStorage();
+	loadSessionStorage();
 	setAnsButtonsText();
 	updateStreakElements();
 	start()
