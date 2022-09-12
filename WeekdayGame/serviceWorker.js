@@ -28,7 +28,7 @@ self.addEventListener('install', (event)=>{
         if (!FORCE_UPDATE){
             return;
         }
-        event.waitUntil(caches.delete(CACHE_NAME).then(() => fillCache(CACHE_NAME)));
+        event.waitUntil(updateCache(CACHE_NAME));
     } else {
         event.waitUntil(fillCache(CACHE_NAME));
     }
@@ -38,20 +38,29 @@ self.addEventListener('fetch', (event)=>{
     event.respondWith(getCachedData(CACHE_NAME, event.request));
 });
 
+async function updateCache(cacheName){
+    await caches.delete(cacheName);
+    fillCache(cacheName);
+}
+
 async function fillCache(cacheName){
     const cacheStorage = await caches.open(cacheName);
     await cacheStorage.addAll(FILES_TO_CACHE);
 }
 
-async function getCachedData(cacheName, url) {
-    if (url === ''){
-        url = 'index.html';
+async function getCachedData(cacheName, request) {
+    if (request.url === 'https://kaatzjo.github.io/WeekdayGame/'){
+        request.url += 'index.html';
+    }
+    if (request.url === 'https://kaatzjo.github.io/WeekdayGame/update.me'){
+        await updateCache(CACHE_NAME);
+        request.url = 'https://kaatzjo.github.io/WeekdayGame/index.html';
     }
     const cacheStorage = await caches.open(cacheName);
-    const cachedResponse = await cacheStorage.match(url);
+    const cachedResponse = await cacheStorage.match(request);
 
     if (!cachedResponse || !cachedResponse.ok) {
-        return await fetch(url);
+        return await fetch(request);
     }
 
     return cachedResponse;
