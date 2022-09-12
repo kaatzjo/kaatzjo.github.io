@@ -6,11 +6,11 @@ window.addEventListener('load', loadStats);
 
 
 function loadStats(){
-    numberGuessesElement.innerHTML = sessionStorage.getItem('numberGuesses');
-    const correctGuesses = sessionStorage.getItem('correctGuesses')
+    numberGuessesElement.innerHTML = sessionStorage.getItem('numberGuesses') || 0;
+    const correctGuesses = sessionStorage.getItem('correctGuesses') || 0;
     correctGuessesElement.innerHTML = correctGuesses;
     const totalTime = sessionStorage.getItem('totalTime');
-    const timePerCorrectGuess = Math.floor(totalTime/correctGuesses)/1000;
+    const timePerCorrectGuess = Math.floor(totalTime/correctGuesses)/1000 || 0;
     timePerCorrectGuessElement.innerHTML = timePerCorrectGuess;
 
 }
