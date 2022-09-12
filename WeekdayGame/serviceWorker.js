@@ -1,6 +1,6 @@
 const CACHE_NAME = 'WeekdayGame-1';
 
-const FORCE_UPDATE = true;
+const FORCE_UPDATE = false;
 
 const FILES_TO_CACHE = [
     'index.html',
@@ -50,11 +50,13 @@ async function fillCache(cacheName){
 
 async function getCachedData(cacheName, request) {
     if (request.url === 'https://kaatzjo.github.io/WeekdayGame/'){
-        request.url += 'index.html';
+        const new_url = 'https://kaatzjo.github.io/WeekdayGame/index.html';
+        return getCachedData(cacheName, new Request(new_url));
     }
     if (request.url === 'https://kaatzjo.github.io/WeekdayGame/update.me'){
         await updateCache(CACHE_NAME);
-        request.url = 'https://kaatzjo.github.io/WeekdayGame/index.html';
+        const new_url = 'https://kaatzjo.github.io/WeekdayGame/index.html';
+        return getCachedData(cacheName, new Request(new_url));
     }
     const cacheStorage = await caches.open(cacheName);
     const cachedResponse = await cacheStorage.match(request);
