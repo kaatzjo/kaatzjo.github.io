@@ -21,7 +21,7 @@ for (let i=0; i<7; i++){
 }
 buttonStart.addEventListener('click', start);
 buttonNext.addEventListener('click', next);
-addEventListener('keydown', keydown_function);
+window.addEventListener('keydown', keydown_function);
 
 
 let randomD;
@@ -63,12 +63,14 @@ function randomDate(startDate, endDate){
 
 function updateQuestionNumber(){
 	questionCounter ++;
+	sessionStorage.setItem('questionCounter', questionCounter);
 	questionNumberElement.innerHTML = String(questionCounter);
 }
 
 function updateStreakElements(){
 	currentStreakElement.innerHTML = String(currentStreak);
 	longestStreakElement.innerHTML = String(longestStreak);
+	sessionStorage.setItem('currentStreak', currentStreak);
 }
 
 function start(){
@@ -150,6 +152,8 @@ function loadLocalStorage(){
 		//locales = document.documentElement.lang;
 		locales = navigator.language;
 	}
+	questionCounter = sessionStorage.getItem('questionCounter') || 0;
+	currentStreak = sessionStorage.getItem('currentStreak') || 0;
 	longestStreak = localStorage.getItem('longestStreak');
 	if (!longestStreak){
 		longestStreak = 0;
@@ -170,7 +174,6 @@ function loadLocalStorage(){
 onload = () => {
 	loadLocalStorage();
 	setAnsButtonsText();
-	currentStreak = 0;
 	updateStreakElements();
 	start()
 }
