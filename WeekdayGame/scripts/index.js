@@ -201,5 +201,7 @@ onload = () => {
 	loadSessionStorage();
 	setAnsButtonsText();
 	updateStreakElements();
-	start()
+	if (localStorage.getItem('autoStart') === 'true'){
+		start();
+	}
 }
