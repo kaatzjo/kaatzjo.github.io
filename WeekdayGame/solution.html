@@ -9,7 +9,8 @@
 		<link rel="icon" type="image/svg+xml" href="icons/calendar.svg">
 		<link rel="apple-touch-icon" sizes="180x180" href="icons/calendar_colorful.png">
 		<link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/more.css">
+        <link rel="stylesheet" href="styles/solution.css">
+        <script src="scripts/solution.js" defer></script>
 	</head>
 	<body>
 		<header>
@@ -20,15 +21,23 @@
                     <li><a href="index.html">Play</a></li>
                     <li><a href="settings.html">Settings</a></li>
                     <li><a href="stats.html">Stats</a></li>
-                    <li class="active"><a href="more.html">More</a></li>
+                    <li><a href="more.html">More</a></li>
                 </ul>
             </nav>
 		</header>
 		<section>
-			<div><a href="solution.html">Step-by-Step Solution</a></div>
-			<img src="icons/info.svg" alt="info" id="info"/>
-            <a href="https://www.youtube.com/watch?v=z2x3SSBVGJU" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=z2x3SSBVGJU</a>
-            <img src="icons/QR.svg" id="QR"/>
+			<div>
+                <label for="exampleDate">Example date:</label>
+                <input type="date" id="exampleDate" name="exampleDate" min="1582-10-15">
+            </div>
+            <h2>Step-by-Step Solution:</h2>
+            <p id="pYear">In 2022 doomsdays are on Monday (1).</p>
+            <p id="pYearExplanation">calculation 1<p>
+            <p id="pMonth">The doomsday in the month of March is the 14-th. So we have to add 3.</p>
+            <p id="pMonthExplanation">calculation 2</p>
+            <p id="pResult">We conclude 03.03.2022 is a Thursday (4).</p>
+            <p id="pResultExplanation">calculation 3</p>
+
 		</section>
     </body>
 </html>

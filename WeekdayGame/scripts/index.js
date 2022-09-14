@@ -89,6 +89,7 @@ function next() {
 	answered = false;
 	dateElement.style.color = "black";
 	randomD = randomDate(startD, endD);
+	sessionStorage.setItem('exampleDate', randomD.toISOString().slice(0,10));
 	weekday = randomD.getDay();
 	const dayString = randomD.toLocaleDateString(locales, dateOptions);
 	console.log(randomD);
